@@ -7,7 +7,7 @@ else
 		puts "#{arg}:"
 		if /.c$/.match(arg)
 			file = File.new(arg	, "w")
-			file.puts("/*File:#{arg}                   */")
+			file.puts("/*File:#{arg}                 */")
 			file.puts("/*Author: Romain  */")
 			file.puts("/*Email:riehli_r@etna-alternance.net*/")
 			file.puts("/*Creation date: #{Time.now}*/")
