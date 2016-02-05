@@ -6,7 +6,7 @@ else
 	file_conf = File.new(".gfile", "r")
 	tab = {"key"=>"value"}
 	while (line = file_conf.gets)
-		result = /^([a-z]+):([a-z_-@ \.]+)$/.match(line)	
+		result = /^([a-z]+):([a-z_@\-\. ]+)$/.match(line)	
 		puts result[1]#TODO
 	end
 	ARGV.each do |arg|
