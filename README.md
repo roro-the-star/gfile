@@ -14,6 +14,7 @@ Usage: gfile file1 [file2[...]]
 --------
 
 **Configuration's file**
+--------
 By default, the .gfile is located in ~/.gfile.
 But you can create a new one with command:
 ```
