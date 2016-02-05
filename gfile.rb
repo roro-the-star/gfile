@@ -22,7 +22,7 @@ def check_cmd()
 	if ARGV.count < 1
 		puts "Usage: ruby ./test.rb file1 [file2[...]]\n"
 		return false
-	elsif ARGV[1] == "init"
+	elsif ARGV[0] == "init"
 		init()
 		return false
 	else
