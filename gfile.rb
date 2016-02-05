@@ -7,17 +7,21 @@ else
 	tab = {"key"=>"value"}
 	while (line = file_conf.gets)
 		result = /^([a-z]+):([a-z_@\-\. ]+)$/.match(line)	
-		puts result[1]#TODO
+		tab[result[1]] = result[2]
 	end
 	ARGV.each do |arg|
 		puts "#{arg}:"
+	  file = File.new(arg	, "w")
 		if /.c$/.match(arg)#Check if the file has a recognized type
-			file = File.new(arg	, "w")
-			file.puts("/*File:#{arg}            */")
-			file.puts("/*Author: Name  */")
-			file.puts("/*Email:email@example.net*/")#Will be replace by tab info
+			tab.each do |key, value|
+				file.puts("/*#{key}: #{value}*/")
+			end
+			
+			##file.puts("/*File:#{arg}            */")
+			##file.puts("/*Author: Name  */")
+			##file.puts("/*Email:email@example.net*/")#Will be replace by tab info
 			file.puts("/*Creation date: #{Time.now}*/")
-			file.puts
+			##file.puts
 			file.close
 			puts "File created\n"
 		else
