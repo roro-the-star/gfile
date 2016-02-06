@@ -37,20 +37,33 @@ def init()
 	puts "File ./.gfile created"
 end
 
+def get_type(path)
+	com = {"c"  => ["/*", "*/"],
+				 "rb" => ["##", "##"]}
+	i =  /.([crb]+)$/.match(path)			 
+	if i
+		return (com[i[1]])
+	else
+		return (false)
+	end
+end
+
+
 if check_cmd()	
 	ARGV.each do |arg|
 		puts "#{arg}:"
 	  file = File.new(arg	, "w")
 		tab = get_info()
-		if /.c$/.match(arg) && tab != false 
-			file.puts ("/*========================================")
+		com_type = get_type(arg)
+		if com_type && tab != false 
+			file.puts ("#{com_type[0]}========================================")
 			tab.each do |key, value|
 				if key != "key"
 					file.puts("#{key}: #{value}")
 				end
 			end
 			file.puts("Creation date: #{Time.now}")
-			file.puts("=========================================*/")
+			file.puts("=========================================#{com_type[1]}")
 			file.close
 			puts "File created\n"
 		else
