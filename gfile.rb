@@ -3,8 +3,8 @@
 def get_info()
 	if File.exists?("./.gfile")
 		file_conf = File.new(".gfile", "r")
-	elsif File.exists?("~/.gfile")
-		file_conf = File.new("~/.gfile", "r")
+	elsif File.exists?("/home/romain/.gfile")
+		file_conf = File.new("#{ENV['HOME']}/.gfile", "r")
 	else
 		puts "There isn't any conf file"
 		return false		
