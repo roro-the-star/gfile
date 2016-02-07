@@ -59,11 +59,23 @@ if check_cmd()
 			file.puts ("#{com_type[0]}========================================")
 			tab.each do |key, value|
 				if key != "key"
-					file.puts("#{key}: #{value}")
+ 					if com_type[0] == com_type[1]
+						file.puts("#{com_type[1]}#{key}: #{value}")
+					else
+						file.puts("#{key}: #{value}")
+					end
 				end
 			end
-			file.puts("Creation date: #{Time.now}")
-			file.puts("=========================================#{com_type[1]}")
+			if com_type[0] == com_type[1]
+				file.puts("#{com_type[0]}Creation date: #{Time.now}")
+			else
+				file.puts("Creation date: #{Time.now}")
+			end
+			if com_type[0] == com_type[1]
+				file.puts("#{com_type[0]}=========================================")
+			else
+				file.puts("=========================================#{com_type[1]}")
+			end
 			file.close
 			puts "File created\n"
 		else
