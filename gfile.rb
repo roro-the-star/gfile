@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+##Read info from a .gfile file wich is in current or home directory
 def get_info()
 	if File.exists?("./.gfile")
 		file_conf = File.new(".gfile", "r")
@@ -16,8 +17,9 @@ def get_info()
 	end
 	file_conf.close
 	return tab
-end
+end## get_info()
 
+##Check if arguments are not wrong
 def check_cmd()
 	if ARGV.count < 1
 		puts "Usage: ruby ./test.rb file1 [file2[...]]\n"
@@ -28,15 +30,17 @@ def check_cmd()
 	else
 		return true
 	end
-end
+end##check_cmd()
 
+##Create a .gfile file in the current directory
 def init()
 	file_conf = File.new(".gfile", "w")
   file_conf.puts("key:value")	
 	file_conf.close
 	puts "File ./.gfile created"
-end
+end##create_file()
 
+##Check file's type and return comment's type
 def get_type(path)
 	com = {"c"  => ["/*", "*/"],
 				 "rb" => ["##", "##"]}
@@ -46,7 +50,25 @@ def get_type(path)
 	else
 		return (false)
 	end
-end
+end##get_type()
+
+##Puts the creation date in the file
+def creation_date(file, com_type)
+	if com_type[0] == com_type[1]
+		file.puts("#{com_type[0]}Creation date: #{Time.now}")
+	else
+		file.puts("Creation date: #{Time.now}")
+	end
+end#creation_date()
+
+##Puts last line in the file
+def last_line(file, com_type)
+	if com_type[0] == com_type[1]
+		file.puts("#{com_type[0]}=========================================")
+	else
+		file.puts("=========================================#{com_type[1]}")
+	end
+end#last_line()
 
 
 if check_cmd()	
@@ -66,18 +88,10 @@ if check_cmd()
 					end
 				end
 			end
-			if com_type[0] == com_type[1]
-				file.puts("#{com_type[0]}Creation date: #{Time.now}")
-			else
-				file.puts("Creation date: #{Time.now}")
-			end
-			if com_type[0] == com_type[1]
-				file.puts("#{com_type[0]}=========================================")
-			else
-				file.puts("=========================================#{com_type[1]}")
-			end
+			creation_date(file, com_type)
+			last_line(file, com_type)
 			file.close
-			puts "File created\n"
+			puts "File created"
 		else
 			puts "File type not recognized"
 		end
