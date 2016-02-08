@@ -2,8 +2,7 @@
 ===========
 File generator in Ruby with automatic commentary header.
 
-
----------
+-------
 
 **Usage**
 ------
@@ -25,3 +24,9 @@ Noz, you just have to update the new file, with informations you want in the hea
 email:example@email.com
 ```
 -------
+
+**Recognized type**
+-----------
+You can create many type of file:
+>c
+>rb
