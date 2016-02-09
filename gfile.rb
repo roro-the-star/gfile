@@ -6,16 +6,16 @@ require "./get_info.rb"
 require "./get_type.rb"
 require "./init.rb"
 require "./last_line.rb"
-
+require "./file_exist.rb"
 
 if check_cmd()  
   ARGV.each do |arg|
     puts "#{arg}:"
     if file_exist(arg)
-      file = File.new(arg , "w")
       tab = get_info()
       com_type = get_type(arg)
       if com_type && tab != false 
+        file = File.new(arg , "w")
         file.puts ("#{com_type[0]}========================================")
         tab.each do |key, value|
           if key != "key"

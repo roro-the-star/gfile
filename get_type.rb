@@ -1,7 +1,9 @@
 ##Check file's type and return comment's type
 def get_type(path)
-  com = {"c"  => ["/*", "*/"],
-         "rb" => ["##", "##"]}
+  com = {"c"   => ["/*", "*/"],
+         "rb"  => ["##", "##"],
+         "php" => ["/*", "*/"],
+         "cpp" => ["/*", "*/"]}
   i =  /.([crb]+)$/.match(path)			 
   if i
     return (com[i[1]])
