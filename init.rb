@@ -12,7 +12,7 @@ def init(name)
     puts "File ./.gfile created"
     client = Mongo::Client.new(['127.0.0.1:27017'], :database => "gfile")
     coll = client[:directory]
-    coll.insert_one({name: name})
+    coll.insert_one({name: name, path: File.absolute_path("."), creation: Time.now})
   else
     puts "Directory is already init"
   end
