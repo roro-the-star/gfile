@@ -4,7 +4,7 @@ def check_cmd()
     puts "Usage: ruby ./test.rb file1 [file2[...]]\n"
     return false
   elsif ARGV[0] == "init"
-    init()
+    init(ARGV[1])
     return false
   else
     return true
