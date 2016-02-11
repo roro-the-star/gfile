@@ -1,6 +1,6 @@
 def file_exist(path)
   if File.exists?(path)
-    puts "File already exist.\nOverwrite ? [y/n]"
+    puts "File already exist.\nOverwrite the header ? [y/n]"
     choice = 'e'
     while choice != 'y' || choice != 'n'
       choice = $stdin.gets.chomp

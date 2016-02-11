@@ -8,6 +8,26 @@ require "./init.rb"
 require "./last_line.rb"
 require "./file_exist.rb"
 
+def generate_file(name)
+  file = File.new(name, "w")
+  if file
+    client = Mongo::Client.new(['127.0.0.1:27017'], :database => "gfile")
+    coll_dir = client[:directory]
+    coll = client[:file]
+    id_dir = false
+    coll_dir.find().each do |obj|
+      if /#{obj["path"]}/.match(File.absolute_path("./#{name}"))
+        puts "Occurence find"
+        id_dir = obj["_id"] 
+      end
+    end
+    coll.insert_one({name: name, path: File.absolute_path("./#{name}"), dir: id_dir})
+  else
+    puts "File #{name} cannot be created"
+  end
+  return file
+end
+
 if check_cmd()  
   ARGV.each do |arg|
     puts "#{arg}:"
@@ -15,7 +35,7 @@ if check_cmd()
       tab = get_info()
       com_type = get_type(arg)
       if com_type && tab != false 
-        file = File.new(arg , "w")
+        file = generate_file(arg)
         file.puts ("#{com_type[0]}========================================")
         tab.each do |key, value|
           if key != "key"
