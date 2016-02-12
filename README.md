@@ -9,7 +9,6 @@ Usage: gfile file1 [file2[...]]
 ```
 
 
-
 **<i class="icon-pencil"></i>Configuration's file**
 --------
 By default, the .gfile is located in ~/.gfile.
@@ -26,7 +25,7 @@ email:example@email.com
 **Recognized type**
 -----------
 You can create many type of file:
->**-**c
->**-**cpp
->**-**rb
->**-**php
+>-c
+>-cpp
+>-rb
+>-php
