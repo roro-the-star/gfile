@@ -25,7 +25,8 @@ email:example@email.com
 **Recognized type**
 -----------
 You can create many type of file:
->-c
->-cpp
->-rb
->-php
+
+>c
+>cpp
+>rb
+>php
