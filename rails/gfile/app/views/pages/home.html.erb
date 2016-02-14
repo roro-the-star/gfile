@@ -7,13 +7,15 @@
 <header>
   <h1>GFile</h1>
 </header>
-<% @coll_directory.each do |obj| %>
-  <a href='/pages/home/?testg=12'>
-    <div class="div_dir">
-      <p class="p_name"> <%= obj["name"] %></p>
-      <p class="p_path"> <%= obj["path"] %></p>
-    </div>
-  </a>
-<% end %>
+<div id="div_body">
+  <% @coll_directory.each do |obj| %>
+    <a href='/pages/home/?testg=12'>
+      <div class="div_dir">
+        <p class="p_name"> <%= obj["name"] %></p>
+        <p class="p_path"> <%= obj["path"] %></p>
+      </div>
+    </a>
+  <% end %>
+</div>
 </body>
 </html>
