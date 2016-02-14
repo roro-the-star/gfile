@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+<header>
+  <h1>GFile</h1>
+</header>
+<% @coll_directory.each do |obj| %>
+  <a href='/pages/home/?testg=12'>
+    <div class="div_dir">
+      <p class="p_name"> <%= obj["name"] %></p>
+      <p class="p_path"> <%= obj["path"] %></p>
+    </div>
+  </a>
+<% end %>
+</body>
+</html>
