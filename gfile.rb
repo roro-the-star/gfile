@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-require "./check_cmd.rb"
-require "./creation_date.rb"
-require "./get_info.rb"
-require "./get_type.rb"
-require "./init.rb"
-require "./last_line.rb"
-require "./file_exist.rb"
+require "./include/check_cmd.rb"
+require "./include/creation_date.rb"
+require "./include/get_info.rb"
+require "./include/get_type.rb"
+require "./include/init.rb"
+require "./include/last_line.rb"
+require "./include/file_exist.rb"
 
 def generate_file(name)
   file = File.new(name, "w")
