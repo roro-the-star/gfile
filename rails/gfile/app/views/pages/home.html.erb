@@ -8,14 +8,21 @@
   <h1>GFile</h1>
 </header>
 <div id="div_body">
+<% if params["testg"] %>
+  <% @coll_file.each do |obj| %>
+    <p>
+      <%= obj["name"] %> 
+    </p>
+    <% end %>
+  <% end %> 
   <% @coll_directory.each do |obj| %>
-    <a href='/pages/home/?testg=12'>
-      <div class="div_dir">
-        <p class="p_name"> <%= obj["name"] %></p>
-        <p class="p_path"> <%= obj["path"] %></p>
-      </div>
-    </a>
-  <% end %>
+    <a href='/pages/home/?testg=<%= obj["_id"]%>'>
+    <div class="div_dir">
+      <p class="p_name"> <%= obj["name"] %></p>
+      <p class="p_path"> <%= obj["path"] %></p>
+    </div>
+  </a>
+<% end %>
 </div>
 </body>
 </html>
