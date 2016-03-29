@@ -7,42 +7,13 @@ require "./include/get_type.rb"
 require "./include/init.rb"
 require "./include/last_line.rb"
 require "./include/file_exist.rb"
+require "./include/generate_file.rb"
+require "./include/generate_file_db.rb"
 
-def generate_file(name)
-  file = File.new(name, "w")
-  if file
-    return file
-  else
-    puts "File #{name} cannot be created"
-    return false
-  end
-end
-
-def generate_file_db(name)
-  file = File.new(name, "w")
-  if file
-    client = Mongo::Client.new(['127.0.0.1:27017'], :database => "gfile")
-    coll_dir = client[:directory]
-    coll = client[:file]
-    id_dir = false
-    coll_dir.find().each do |obj|
-      if /#{obj["path"]}/.match(File.absolute_path("./#{name}"))
-        puts "Occurence find"
-        id_dir = obj["_id"].to_s 
-      end
-    end
-    coll.insert_one({name: name, path: File.absolute_path("./#{name}"), dir: id_dir})
-    return file
-  else
-    puts "File #{name} cannot be created"
-    return false
-  end
-end
-
-if check_cmd()  
+if check_cmd()  ##Check user's cmd
   ARGV.each do |arg|
     puts "#{arg}:"
-    exist = file_exist(arg)
+    exist = file_exist(arg) ##Check if the file already exist in database
     if exist
       tab = get_info()
       com_type = get_type(arg)
