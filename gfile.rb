@@ -15,12 +15,12 @@ if check_cmd()  ##Check user's cmd
     puts "#{arg}:"
     exist = file_exist(arg) ##Check if the file already exist in database
     if exist
-      tab = get_info()
-      com_type = get_type(arg)
-      if com_type && tab != false 
-        if exist == 1
+      tab = get_info()##Get info from conf file
+      com_type = get_type(arg) ##Get the comment's type
+      if com_type && tab != false ##If the format is enable and configuration file not empty 
+        if exist == 1 ##If file already exist
           file = generate_file_db(arg)
-        elsif exist == 2
+        elsif exist == 2 ##Else if user decide to overwrite the header
           file = generate_file(arg)
         end
         file.puts ("#{com_type[0]}========================================")
@@ -36,7 +36,7 @@ if check_cmd()  ##Check user's cmd
         creation_date(file, com_type)
         last_line(file, com_type)
         file.close
-        puts "File created"
+        puts "File #{name} created"
       else
         puts "File type not recognized"
       end
