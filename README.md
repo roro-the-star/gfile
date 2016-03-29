@@ -2,16 +2,15 @@
 ===========
 File generator in Ruby with automatic commentary header.
 
-**<i class="icon-terminal"></i>Usage**
+**Usage**
 ------
 ```
 Usage: gfile file1 [file2[...]]
 ```
 
-**<i class="icon-pencil"></i>Configuration's file**
+**Configuration's file**
 --------
-By default, the .gfile is located in ~/.gfile.
-But you can create a new one with command:
+You can create a new one with command:
 ```
 gfile init
 ```
