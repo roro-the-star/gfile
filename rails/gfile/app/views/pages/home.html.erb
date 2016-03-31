@@ -360,11 +360,11 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-comments fa-5x"></i>
+                <i class="fa fa-server fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">26</div>
-                <div>New Comments!</div>
+                <div class="huge"><%= @coll_directory.count %> </div>
+                <div>Repository</div>
               </div>
             </div>
           </div>
@@ -382,11 +382,11 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-tasks fa-5x"></i>
+                <i class="fa fa-file fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">12</div>
-                <div>New Tasks!</div>
+                <div class="huge"><%= @coll_file.count %> </div>
+                <div>Files</div>
               </div>
             </div>
           </div>
